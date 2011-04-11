@@ -6,3 +6,11 @@
 <p>
   Time to say <%= link_to "Goodbye!", say_goodbye_path %>
 </p>
+
+<% unless @files.count == 0 %>
+  <ul>
+  <% @files.each do |f| %>
+    <li><%=f%></li>
+  <% end %>
+  </ul>
+<% end %>
