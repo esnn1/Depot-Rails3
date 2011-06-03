@@ -1,3 +1,5 @@
+/* @override http://rails3.dev:88/stylesheets/depot.css?1307135077 */
+
 /* Global styles */
 
 #store #notice {
@@ -154,3 +156,7 @@
   margin-right: 2em;
 }
 
+#time {
+	margin-top: 10px;
+	color: #bfb;
+}
