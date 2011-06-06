@@ -160,3 +160,13 @@
 	margin-top: 10px;
 	color: #bfb;
 }
+
+
+/**
+ *  Style the form inline with the product listing
+ */
+
+#store .entry form,
+#store .entry form div {
+  display: inline;
+}
