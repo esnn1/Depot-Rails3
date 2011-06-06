@@ -19,7 +19,9 @@
       <a href="http://www..../news">News</a><br />
       <a href="http://www..../contact">Contact</a><br />
       <div id="time">Date: <%= Time.now.strftime('%A, %B %Y') %></div>
-      <div id="time">Index count: <%= session[:counter] %></div>
+      <% if session[:counter] > 15 %>
+        <div id="time">Index count: <%= session[:counter] %></div>
+      <% end %>
     </div>
     <div id="main">
       <%= yield %><!-- <label id="code.depot.e.include"/> -->
