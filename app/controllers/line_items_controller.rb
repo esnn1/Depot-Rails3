@@ -78,9 +78,16 @@ class LineItemsController < ApplicationController
     cart = Cart.find(@line_item.cart)
     @line_item.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(cart) }
-      format.xml  { head :ok }
+    if 0 == cart.line_items.size 
+      respond_to do |format|
+        format.html { redirect_to(store_url, :notice => 'Your cart is now empty' ) }
+        format.xml  { head :ok }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to(cart, :notice => 'Item removed' ) }
+        format.xml  { head :ok }
+      end
     end
   end
 end
