@@ -75,10 +75,11 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1.xml
   def destroy
     @line_item = LineItem.find(params[:id])
+    cart = Cart.find(@line_item.cart)
     @line_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to(line_items_url) }
+      format.html { redirect_to(cart) }
       format.xml  { head :ok }
     end
   end
