@@ -1,10 +1,10 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: MyString
+  name: Clint Shryock
   address: MyText
-  email: MyString
-  pay_type: MyString
+  email: clint@dogmeat.com
+  pay_type: Check
 
 two:
   name: MyString
