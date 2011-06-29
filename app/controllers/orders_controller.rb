@@ -6,7 +6,8 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @orders }
+      format.xml  { render :xml => @orders.to_xml(:include => :line_items) }
+      format.json { render :json => @orders.to_json(:include => :line_items) }
     end
   end
 
