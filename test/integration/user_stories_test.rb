@@ -38,6 +38,19 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_template "index"
     cart = Cart.find(session[:cart_id])
     assert_equal 0, cart.line_items.size
+
+    # check database
+    orders = Order.all
+    assert_equal 1, orders.size
+    order = orders.first
+    assert_equal "Clint Shryock", order.name
+
+    line_item = order.line_items.first
+    assert_equal ruby_book, line_item.product
+    
+    # check mail
+    mail = ActionMailer::Base.deliveries.last
+    assert_equal ["clint@dogmeat.com"], mail.to
   end
 
 end
