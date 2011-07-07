@@ -1,11 +1,13 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
 
 <p>
   <b>Name:</b>
   <%= @user.name %>
 </p>
 
-<p>
+<p id="created">
   <b>Created at:</b>
   <%= @user.created_at %>
 </p>

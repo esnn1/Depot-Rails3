@@ -33,6 +33,7 @@ class UsersControllerTest < ActionController::TestCase
   test "should show user" do
     get :show, :id => @user.to_param
     assert_response :success
+    assert_select '#created', /2011/
   end
 
   test "should get edit" do
