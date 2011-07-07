@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
-    @users = User.all
+    @users = User.order(:name)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,7 +44,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
+        # redirect to index; nothing really to see on user#show
+        format.html { redirect_to(users_url, :notice => "User #{@user.name} created") }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }
@@ -60,7 +61,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
+        # redirect to index; nothing really to see on user#show
+        format.html { redirect_to(users_url, :notice => "User #{@user.name} updated") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
