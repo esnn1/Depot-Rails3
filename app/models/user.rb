@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  # 'password' is a virtual attribute
   def password=(password)
     @password = password
     if password.present?
