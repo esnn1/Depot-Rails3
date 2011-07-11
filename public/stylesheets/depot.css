@@ -228,3 +228,8 @@
 }
 /* END:form */
 
+/* Time on homepage side-bar */
+#time {
+  margin: 10px 0;
+  color: #fff;
+}
