@@ -1,6 +1,6 @@
-class User < ActiveRecord::Base
+require 'digest/sha2'
 
-  require 'digest/sha2'
+class User < ActiveRecord::Base
 
   validates :name, :presence => true, :uniqueness => true
   validates :password, :confirmation => true
