@@ -10,7 +10,7 @@
 <body id="store">
   <div id="banner">
     <%= image_tag("logo.png") %>
-    <%= @page_title || "Pragmatic Bookshelf" %><!-- <label id="code.depot.e.title"/> -->
+    <%= @page_title || t('.title') %><!-- <label id="code.depot.e.title"/> -->
   </div>
   <div id="columns">
     <div id="side">
@@ -19,10 +19,10 @@
           <%= render @cart %>
         <% end %>
       <% end %>
-      <a href="http://rails3.dev:88">Home</a><br />
-      <a href="/">Questions</a><br />
-      <a href="/">News</a><br />
-      <a href="/">Contact</a><br />
+      <a href="http://rails3.dev:88"><%= t('.home') %></a><br />
+      <a href="/"><%= t('.questions') %></a><br />
+      <a href="/"><%= t('.news') %></a><br />
+      <a href="/"><%= t('.contact') %></a><br />
 
       <% if session[:user_id] %>
         <br />
