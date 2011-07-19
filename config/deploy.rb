@@ -1,24 +1,19 @@
 set :application, "Rails3Depot"
-set :repository,  "clint@ctshryock.com:webapps/git/repos/rails3.git"
+set :repository,  "file:///Users/clint/Projects/Rails3/.git"
+set :deploy_via, :copy
 set :deploy_to, "/home/clint/webapps/depot/depot_app"
-
-set :deploy_via, :remote_cache
 
 set :scm, 'git'
 set :branch, 'master'
+set :rails_env, 'production'
 set :use_sudo, false
 set :keep_releases, 4
 server 'depot.catsby.net', :app, :web, :db, :primary => true
 
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
-
-role :web, "your web-server here"                          # Your HTTP server, Apache/etc
-role :app, "your app-server here"                          # This may be the same as your `Web` server
-role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
-role :db,  "your slave db-server here"
-
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
+set :default_environment, { 
+  'PATH' => "/home/clint/webapps/depot/bin:/home/clint/webapps/grams_on_a_map/bin:/home/clint/bin/:/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/home/clint/bin:/home/clint/.gem/ruby/1.8/bin:/home/clint/webapps/git/bin:/home/clint/webapps/git/bin:/home/clint/bin:/home/clint/.gem/ruby/1.8/bin:/home/clint/webapps/git/bin",
+  'GEM_HOME' => '/home/clint/webapps/depot/gems'
+}
 
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
@@ -29,7 +24,7 @@ namespace :deploy do
   end
   desc "reload the database with seed data"
   task :seed do
-    rn "cd #{current_path}; rake db:seed RAILS_ENV=production"
+    run "cd #{current_path}; rake db:seed RAILS_ENV=production"
   end
 end
 
