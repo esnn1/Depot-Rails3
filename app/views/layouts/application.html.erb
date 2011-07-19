@@ -9,8 +9,15 @@
 </head>
 <body id="store">
   <div id="banner">
+    <%= form_tag store_path, :class => 'locale' do %>
+      <%= select_tag 'set_locale', 
+            options_for_select(LANGUAGES, I18n.locale.to_s),
+            :onchange => 'this.form.submit()' %>
+      <%= submit_tag 'submit' %>
+      <%= javascript_tag "$$('.locale input').each(Element.hide)" %>
+    <% end %>
     <%= image_tag("logo.png") %>
-    <%= @page_title || "Pragmatic Bookshelf" %><!-- <label id="code.depot.e.title"/> -->
+    <%= @page_title || t('.title') %><!-- <label id="code.depot.e.title"/> -->
   </div>
   <div id="columns">
     <div id="side">
@@ -19,10 +26,10 @@
           <%= render @cart %>
         <% end %>
       <% end %>
-      <a href="http://rails3.dev:88">Home</a><br />
-      <a href="/">Questions</a><br />
-      <a href="/">News</a><br />
-      <a href="/">Contact</a><br />
+      <a href="http://rails3.dev:88"><%= t('.home') %></a><br />
+      <a href="/"><%= t('.questions') %></a><br />
+      <a href="/"><%= t('.news') %></a><br />
+      <a href="/"><%= t('.contact') %></a><br />
 
       <% if session[:user_id] %>
         <br />
