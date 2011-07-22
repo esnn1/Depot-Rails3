@@ -1,6 +1,9 @@
 class ProductsController < ApplicationController
   # GET /products
   # GET /products.xml
+
+  cache_sweeper :products_sweeper
+
   def index
     @products = Product.all
 
