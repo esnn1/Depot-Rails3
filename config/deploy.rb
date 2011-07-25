@@ -12,7 +12,7 @@ set :use_sudo, false
 set :keep_releases, 4
 server 'depot.catsby.net', :app, :web, :db, :primary => true
 
-ssh_options[:keys] = ["#{ENV['HOME']}/.ssh/id_rsa"] 
+ssh_options[:keys] = ["#{ENV['HOME']}/.ssh/id_dsa"] 
 ssh_options[:forward_agent] = true
 
 set :default_environment, { 
