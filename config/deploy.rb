@@ -5,8 +5,6 @@ set :repository,  'clint@clint.webfactional.com:webapps/git/repos/rails3.git'
 set :deploy_via, :remote_cache
 set :deploy_to, "/home/clint/webapps/depot/depot_app"
 
-ssh_options[:forward_agent] = true
-
 set :scm, 'git'
 set :branch, 'master'
 set :rails_env, 'production'
