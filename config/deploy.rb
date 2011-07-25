@@ -1,7 +1,11 @@
+require "bundler/capistrano"
+
 set :application, "Rails3Depot"
-set :repository,  "file:///Users/clint/Projects/Rails3/.git"
-set :deploy_via, :copy
+set :repository,  'clint@clint.webfactional.com:webapps/git/repos/rails3.git'
+set :deploy_via, :remote_cache
 set :deploy_to, "/home/clint/webapps/depot/depot_app"
+
+ssh_options[:forward_agent] = true
 
 set :scm, 'git'
 set :branch, 'master'
@@ -35,8 +39,8 @@ after "deploy:update", "deploy:cleanup"
 
 # update gems
 
-after "deploy:update_code", :bundle_install
-desc "install the necessary prerequisites"
-task :bundle_install, :roles => :app do
-  run "cd #{release_path} && bundle install"
-end
+# after "deploy:update_code", :bundle_install
+# desc "install the necessary prerequisites"
+# task :bundle_install, :roles => :app do
+#   run "cd #{release_path} && bundle install"
+# end
