@@ -12,9 +12,6 @@ set :use_sudo, false
 set :keep_releases, 4
 server 'depot.catsby.net', :app, :web, :db, :primary => true
 
-ssh_options[:keys] = ["#{ENV['HOME']}/.ssh/id_dsa"] 
-ssh_options[:forward_agent] = true
-
 set :default_environment, { 
   'PATH' => "/home/clint/webapps/depot/bin:/home/clint/webapps/grams_on_a_map/bin:/home/clint/bin/:/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/home/clint/bin:/home/clint/.gem/ruby/1.8/bin:/home/clint/webapps/git/bin:/home/clint/webapps/git/bin:/home/clint/bin:/home/clint/.gem/ruby/1.8/bin:/home/clint/webapps/git/bin",
   'GEM_HOME' => '/home/clint/webapps/depot/gems'
