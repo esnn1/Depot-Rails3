@@ -13,9 +13,9 @@ class StoreController < ApplicationController
 
     # Playtime: filter products by default locale if provided
     if params[:locale] 
-      @products = Product.find_all_by_locale(params[:locale])
+      @products = Product.where(:locale => params[:locale], :active => true)
     else
-      @products = Product.all
+      @products = Product.all_active
     end
 
     #  Count number of times user hits store#index,
