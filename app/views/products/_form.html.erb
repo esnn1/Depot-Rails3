@@ -31,6 +31,10 @@
     <%= f.label :locale %><br />
     <%= f.select :locale, LANGUAGES %>
   </div>
+  <div class="field">
+    <%= f.label :active %><br />
+    <%= f.select :active, [['True', true], ['False', false]] %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

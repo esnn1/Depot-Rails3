@@ -5,7 +5,8 @@ class ProductsController < ApplicationController
   cache_sweeper :products_sweeper
 
   def index
-    @products = Product.all
+    @products = Product.all_active
+    @inactive_products = Product.all_inactive
 
     respond_to do |format|
       format.html # index.html.erb
@@ -76,7 +77,8 @@ class ProductsController < ApplicationController
   # DELETE /products/1.xml
   def destroy
     @product = Product.find(params[:id])
-    @product.destroy
+    @product.active = false
+    @product.save
 
     respond_to do |format|
       format.html { redirect_to(products_url) }

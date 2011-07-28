@@ -3,6 +3,8 @@ class Product < ActiveRecord::Base
   # Default all queries that start with the Product
   # to be ordered by title
   default_scope :order => 'title'
+  named_scope :all_active, :conditions => {:active => true}
+  named_scope :all_inactive, :conditions => {:active => false}
 
   has_many :line_items
   has_many :orders, :through => :line_items
