@@ -31,6 +31,7 @@ gem 'will_paginate', '>= 3.0.pre'
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'RedCloth'
 end
 
 group :production do
