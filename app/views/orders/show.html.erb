@@ -1,4 +1,6 @@
+<% if notice %>
 <p id="notice"><%= notice %></p>
+<% end %>
 
 <p>
   <b>Name:</b>
@@ -19,6 +21,10 @@
   <b>Pay type:</b>
   <%= @order.pay_type %>
 </p>
+
+<table>
+  <%=render :partial => 'orders/line_item', :collection => @order.line_items %>
+</table>
 
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
