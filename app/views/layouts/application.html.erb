@@ -13,7 +13,7 @@
             options_for_select(LANGUAGES, I18n.locale.to_s),
             :onchange => 'this.form.submit()' %>
       <%= submit_tag 'submit' %>
-      <%= javascript_tag "$$('.locale input').each(Element.hide)" %>
+      <%= javascript_tag "$('.locale input').hide()" %>
     <% end %>
     <%= image_tag "logo.png"  %>
     <%= @page_title || t('.title') %><!-- <label id="code.depot.e.title"/> -->
