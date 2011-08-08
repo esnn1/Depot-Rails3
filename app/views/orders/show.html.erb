@@ -22,9 +22,20 @@
   <%= @order.pay_type %>
 </p>
 
-<table>
-  <%=render :partial => 'orders/line_item', :collection => @order.line_items %>
-</table>
+<% hidden_div_if(@order.line_items.count == 0, :id => 'order-items') do %>
+<div id="order-items">
+  <table>
+    <thead>
+      <tr>
+        <th>Quantity</th>
+        <th>Item</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%=render :partial => 'orders/line_item', :collection => @order.line_items %>
+  </table>
+</div>
+<% end %>
 
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
