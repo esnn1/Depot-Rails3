@@ -2,10 +2,12 @@
 
 <table>
   <tr>
+    <th>Item count</th>
     <th>Name</th>
     <th>Address</th>
     <th>Email</th>
     <th>Pay type</th>
+    <th>Amount</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,10 +15,12 @@
 
 <% @orders.each do |order| %>
   <tr>
+    <td><%= order.line_items.count %></td>
     <td><%= order.name %></td>
     <td><%= order.address %></td>
     <td><%= order.email %></td>
     <td><%= order.pay_type %></td>
+    <td><%= total_cost(order.line_items) %></td>
     <td><%= link_to 'Show', order %></td>
     <td><%= link_to 'Edit', edit_order_path(order) %></td>
     <td><%= link_to 'Destroy', order, :confirm => 'Are you sure?', :method => :delete %></td>

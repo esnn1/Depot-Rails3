@@ -78,7 +78,7 @@ class ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     @product.active = false
-    @product.save
+    @product.save!
 
     respond_to do |format|
       format.html { redirect_to(products_url) }

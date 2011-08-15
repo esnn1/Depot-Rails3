@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :product_id %><br />
-    <%= f.text_field :product_id %>
+    <%= f.select :product_id, Product.all_active.collect {|p| [p.title, p.id] } %>
   </div>
   <div class="field">
     <%= f.label :cart_id %><br />
-    <%= f.text_field :cart_id %>
+    <%= f.select :cart_id, Order.all.collect {|o| [o.name, o.id] } %>
   </div>
   <div class="actions">
     <%= f.submit %>
