@@ -36,6 +36,11 @@ gem 'will_paginate', '>= 3.0.pre'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 
+# Rails Admin https://github.com/sferik/rails_admin
+gem 'fastercsv' # Only required on Ruby 1.8 and below, left in for fun
+gem 'devise' # Devise must be required before RailsAdmin
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'RedCloth'

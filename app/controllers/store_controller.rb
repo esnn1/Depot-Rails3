@@ -2,7 +2,7 @@ class StoreController < ApplicationController
 
   skip_before_filter :authorize
 
-  caches_page :index
+  # caches_page :index
 
   def index
     if params[:set_locale]

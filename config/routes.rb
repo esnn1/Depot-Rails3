@@ -1,15 +1,17 @@
 Depot::Application.routes.draw do
 
-  get 'admin' => 'admin#index'
+  devise_for :users
 
-  controller :sessions do
-    get    'login'  => :new
-    post   'login'  => :create
-    delete 'logout' => :destroy
-  end
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
+  # controller :sessions do
+  #   get    'login'  => :new
+  #   post   'login'  => :create
+  #   delete 'logout' => :destroy
+  # end
 
   scope '(:locale)' do
-    resources :users
+    # resources :users
     resources :orders
     resources :line_items
     resources :carts
@@ -18,6 +20,7 @@ Depot::Application.routes.draw do
     end
     root :to => 'store#index', :as => 'store'
   end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
