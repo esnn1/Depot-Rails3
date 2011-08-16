@@ -25,6 +25,7 @@ namespace :deploy do
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+    run "#{deploy_to}/bin/restart"
   end
   desc "reload the database with seed data"
   task :seed do
@@ -39,8 +40,8 @@ after "deploy:update", "deploy:cleanup"
 
 # update gems
 
-# after "deploy:update_code", :bundle_install
-# desc "install the necessary prerequisites"
-# task :bundle_install, :roles => :app do
-#   run "cd #{release_path} && bundle install"
-# end
+after "deploy:update_code", :bundle_install
+desc "install the necessary prerequisites"
+task :bundle_install, :roles => :app do
+  run "cd #{release_path} && bundle install"
+end
