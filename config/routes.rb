@@ -8,16 +8,17 @@ Depot::Application.routes.draw do
   #   get    'login'  => :new
   #   post   'login'  => :create
   #   delete 'logout' => :destroy
+
+  resources :orders
+  resources :line_items
+  resources :carts
+  resources :products do
+    get :who_bought, :on => :member
+  end
   # end
 
   scope '(:locale)' do
     # resources :users
-    resources :orders
-    resources :line_items
-    resources :carts
-    resources :products do
-      get :who_bought, :on => :member
-    end
     root :to => 'store#index', :as => 'store'
   end
 
